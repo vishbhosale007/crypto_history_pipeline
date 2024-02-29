@@ -1,4 +1,5 @@
 numpy=>1.26.3
 pandas=>2.1.4
-pyspark=>3.5.0
+pyspark=3.5.0
 requests>2.31.0
+black
