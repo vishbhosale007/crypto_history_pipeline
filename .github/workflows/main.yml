@@ -1,0 +1,39 @@
+name: PySpark Scripts
+
+on:
+  pull_request:
+    branches:
+      - main 
+
+jobs:
+  run_scripts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.12'
+        
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+        
+      - name: Run PySpark Bronze Layer
+        run: |
+          python3 data_pipeline/raw/data_pull_hist.py
+        
+      - name: Run PySpark Silver Layer
+        run: |
+          python data_pipeline/silver/silver_layer.py
+
+      - name: Optimize PySpark Silver Layer
+        run: |
+          python data_pipeline/silver/optimize_silver.py
+        
+      - name: Run PySpark Gold Layer
+        run: |
+          python data_pipeline/gold/gold_layer.py
