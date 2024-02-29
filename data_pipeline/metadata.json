@@ -1,0 +1,12 @@
+{
+    "dimension_load": ["BCH","BNB","BTC","ETH","IOTA","SOL","USDT","XRP"],
+    "fact_load": ["coinmarketcap"],
+    "properties" : {
+        "dimension_load" : {
+            "zorder_by" : ["date"]
+        },
+        "fact_load" : {
+            "zorder_by" : ["symbol","date"]
+        }
+    }
+}
