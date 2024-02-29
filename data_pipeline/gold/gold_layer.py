@@ -32,7 +32,6 @@ fact_df = spark.read.table("silver.fact_coinmarketcap").select(
     "24h_volume_usd",
     "available_supply",
     "id",
-    "last_updated",
     "market_cap_usd",
     "max_supply",
     "name",
