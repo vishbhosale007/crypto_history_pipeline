@@ -49,7 +49,7 @@ joined_df.write.format("delta").mode("overwrite").saveAsTable(f"gold.crypto_mark
 
 # Tables where no trade data is present
 no_trade_data = dim_df.join(fact_df, "symbol", "leftanti")
-no_trade_data.groupBY("symbol").agg({"date": "min"})
+no_trade_data.groupBy("symbol").agg({"date": "min"})
 no_trade_data.write.format("delta").mode("overwrite").saveAsTable(
     f"gold.coins_with_no_trade_data"
 )
